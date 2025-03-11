@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+
+<div class="row mb-4">
+  <div class="col-md-8 mx-auto">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-4">Add New Expense</h2>
+        
+        <form action="/expenses" method="POST">
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" id="category" name="category" required>
+              <option value="" disabled selected>Select a category</option>
+              <option value="food">Food</option>
+              <option value="travel">Travel</option>
+              <option value="housing">Housing</option>
+              <option value="utilities">Utilities</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Enter a description" required>
+          </div>
+          
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount ($)</label>
+            <input type="number" class="form-control" id="amount" name="amount" step="0.01" min="0.01" placeholder="Enter amount" required>
+          </div>
+          
+          <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" value="<%= new Date().toISOString().split('T')[0] %>">
+          </div>
+          
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/" class="btn btn-outline-secondary me-md-2">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add Expense</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %> 
