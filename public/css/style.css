@@ -1,22 +1,22 @@
 /* Custom styles for the finance dashboard */
 
 :root {
-  /* Modern Color Palette */
-  --primary: #4361ee;
-  --primary-dark: #3a56d4;
-  --secondary: #6c757d;
-  --success: #2ec4b6;
-  --info: #4cc9f0;
-  --warning: #ff9f1c;
-  --danger: #e63946;
+  /* Soft Color Palette */
+  --primary: #6d9dc5;
+  --primary-dark: #5a8db1;
+  --secondary: #8d99ae;
+  --success: #83c5be;
+  --info: #a9def9;
+  --warning: #f9c74f;
+  --danger: #e07a5f;
   --light: #f8f9fa;
-  --dark: #343a40;
+  --dark: #2b2d42;
   --white: #ffffff;
-  --bg-color: #f5f7fa;
+  --bg-color: #f7f9fb;
   --card-bg: #ffffff;
   --text-color: #2b2d42;
-  --text-muted: #6c757d;
-  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --text-muted: #8d99ae;
+  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   --border-radius: 10px;
   --transition: all 0.3s ease;
 }
@@ -62,7 +62,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(135deg, #4361ee, #3a56d4);
+  background: linear-gradient(135deg, #6d9dc5, #5a8db1);
 }
 
 .navbar-brand {
@@ -92,7 +92,7 @@ body {
   font-weight: 600;
   color: var(--text-color);
   border-top: none;
-  background-color: rgba(67, 97, 238, 0.05);
+  background-color: rgba(109, 157, 197, 0.05);
 }
 
 .table td, .table th {
@@ -101,7 +101,7 @@ body {
 }
 
 .table-hover tbody tr:hover {
-  background-color: rgba(67, 97, 238, 0.05);
+  background-color: rgba(109, 157, 197, 0.05);
 }
 
 /* Button Styles */
@@ -119,40 +119,40 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #4361ee, #3a56d4);
+  background: linear-gradient(135deg, #6d9dc5, #5a8db1);
   border: none;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #3a56d4, #2a46c4);
+  background: linear-gradient(135deg, #5a8db1, #4a7d9f);
 }
 
 .btn-outline-primary {
-  color: #4361ee;
-  border-color: #4361ee;
+  color: #6d9dc5;
+  border-color: #6d9dc5;
 }
 
 .btn-outline-primary:hover {
-  background-color: #4361ee;
+  background-color: #6d9dc5;
 }
 
 .btn-success {
-  background: linear-gradient(135deg, #2ec4b6, #26a69a);
+  background: linear-gradient(135deg, #83c5be, #70b2ab);
   border: none;
 }
 
 .btn-info {
-  background: linear-gradient(135deg, #4cc9f0, #3bb4da);
+  background: linear-gradient(135deg, #a9def9, #8fd1f9);
   border: none;
 }
 
 .btn-warning {
-  background: linear-gradient(135deg, #ff9f1c, #f08700);
+  background: linear-gradient(135deg, #f9c74f, #f8bc2c);
   border: none;
 }
 
 .btn-danger {
-  background: linear-gradient(135deg, #e63946, #d62c39);
+  background: linear-gradient(135deg, #e07a5f, #d96a4f);
   border: none;
 }
 
@@ -165,8 +165,8 @@ body {
 }
 
 .form-control:focus, .form-select:focus {
-  box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
-  border-color: #a5b4fc;
+  box-shadow: 0 0 0 0.25rem rgba(109, 157, 197, 0.25);
+  border-color: #a9c7e0;
 }
 
 /* Badge Styles */
@@ -237,10 +237,10 @@ footer a.text-secondary:hover {
 
 /* Custom Card Styles */
 .total-card {
-  background: linear-gradient(135deg, #4361ee, #3a56d4);
+  background: linear-gradient(135deg, #6d9dc5, #5a8db1);
   color: white;
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+  box-shadow: 0 4px 15px rgba(109, 157, 197, 0.3);
 }
 
 .tip-card {
@@ -280,28 +280,28 @@ footer a.text-secondary:hover {
 }
 
 .alert-primary {
-  background-color: rgba(67, 97, 238, 0.1);
-  color: #3a56d4;
+  background-color: rgba(109, 157, 197, 0.1);
+  color: #5a8db1;
 }
 
 .alert-success {
-  background-color: rgba(46, 196, 182, 0.1);
-  color: #26a69a;
+  background-color: rgba(131, 197, 190, 0.1);
+  color: #70b2ab;
 }
 
 .alert-info {
-  background-color: rgba(76, 201, 240, 0.1);
-  color: #3bb4da;
+  background-color: rgba(169, 222, 249, 0.1);
+  color: #8fd1f9;
 }
 
 .alert-warning {
-  background-color: rgba(255, 159, 28, 0.1);
-  color: #f08700;
+  background-color: rgba(249, 199, 79, 0.1);
+  color: #f8bc2c;
 }
 
 .alert-danger {
-  background-color: rgba(230, 57, 70, 0.1);
-  color: #d62c39;
+  background-color: rgba(224, 122, 95, 0.1);
+  color: #d96a4f;
 }
 
 /* Mobile-specific styles */
@@ -338,12 +338,12 @@ footer a.text-secondary:hover {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #4361ee, #3a56d4);
+    background: linear-gradient(135deg, #6d9dc5, #5a8db1);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+    box-shadow: 0 4px 15px rgba(109, 157, 197, 0.4);
     z-index: 1000;
     font-size: 24px;
     transition: var(--transition);

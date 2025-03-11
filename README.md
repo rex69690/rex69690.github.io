@@ -13,6 +13,7 @@ A web-based personal finance dashboard built with Express.js and Node.js that al
 - Money management tips and advice
 - Progressive Web App (PWA) capabilities for offline use
 - Modern, clean UI with smooth animations
+- Soft, muted color scheme for a pleasant user experience
 
 ## Prerequisites
 
@@ -52,7 +53,51 @@ npm run dev
 
 ## Deployment Options
 
-### Option 1: Deploy to Render.com (Free)
+### Option 1: Deploy to Vercel (Recommended)
+
+1. **Create a MongoDB Atlas Database**:
+   - Sign up for a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+   - Create a new cluster (the free tier is sufficient)
+   - Create a database user with read/write permissions
+   - Get your connection string by clicking "Connect" > "Connect your application"
+   - Replace `<username>`, `<password>`, and `<dbname>` with your details
+
+2. **Prepare Your Project for Vercel**:
+   - Make sure your project has a `vercel.json` file (already included in this repo)
+   - Ensure your MongoDB connection string is ready
+
+3. **Deploy Using Vercel CLI**:
+   - Install Vercel CLI: `npm i -g vercel`
+   - Run `vercel login` and follow the prompts
+   - In your project directory, run `vercel`
+   - When prompted, set the following:
+     - Environment variables:
+       - `MONGODB_URI`: Your MongoDB Atlas connection string
+     - Build command: `npm install`
+     - Output directory: Leave blank (uses default)
+     - Development command: `npm run dev`
+
+4. **Deploy Using Vercel Dashboard**:
+   - Push your code to GitHub
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click "New Project" and import your GitHub repository
+   - Configure project:
+     - Framework Preset: Other
+     - Root Directory: ./
+     - Build Command: `npm install`
+     - Output Directory: Leave blank
+   - Add Environment Variables:
+     - `MONGODB_URI`: Your MongoDB Atlas connection string
+   - Click "Deploy"
+
+5. **Troubleshooting Vercel Deployment**:
+   - If you encounter errors, check the Vercel deployment logs
+   - Ensure your MongoDB Atlas connection string is correct
+   - Make sure your MongoDB Atlas IP whitelist includes `0.0.0.0/0` (allow from anywhere)
+   - Check that your `vercel.json` file is properly configured
+   - Verify that all dependencies are listed in `package.json`
+
+### Option 2: Deploy to Render.com
 
 1. Create an account on [Render](https://render.com/)
 2. Create a new Web Service and connect your GitHub repository
@@ -64,7 +109,7 @@ npm run dev
    - `MONGODB_URI`: Your MongoDB Atlas connection string
 5. Click "Create Web Service"
 
-### Option 2: Deploy to Heroku
+### Option 3: Deploy to Heroku
 
 1. Create an account on [Heroku](https://www.heroku.com/)
 2. Install the Heroku CLI and login
@@ -77,13 +122,6 @@ git push heroku main
 ```
 heroku config:set MONGODB_URI=your_mongodb_atlas_connection_string
 ```
-
-### Option 3: Deploy to Railway.app
-
-1. Create an account on [Railway](https://railway.app/)
-2. Create a new project and connect your GitHub repository
-3. Add a MongoDB database from the Railway dashboard
-4. Railway will automatically detect your Node.js app and deploy it
 
 ## Setting Up MongoDB Atlas (Cloud Database)
 
@@ -133,7 +171,7 @@ Once installed, you can use the app even when offline!
 - Responsive layout that works on all devices
 - Interactive charts for visualizing expenses
 - Smooth animations and transitions
-- Dark header with gradient effect
+- Soft, muted color scheme for a pleasant experience
 - Mobile-optimized with a floating action button
 - Color-coded categories for easy identification
 
