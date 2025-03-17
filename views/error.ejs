@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card border-danger">
+        <div class="card-header bg-danger text-white">
+          <h4><i class="fas fa-exclamation-triangle"></i> Error</h4>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= message || 'Something went wrong' %></h5>
+          
+          <% if (typeof error !== 'undefined' && Object.keys(error).length > 0) { %>
+            <div class="alert alert-secondary mt-3">
+              <pre class="mb-0"><%= JSON.stringify(error, null, 2) %></pre>
+            </div>
+          <% } %>
+          
+          <div class="mt-4">
+            <p>Here are some things you can try:</p>
+            <ul>
+              <li>Refresh the page</li>
+              <li>Go back to the <a href="/">dashboard</a></li>
+              <li>Try again later</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href="/" class="btn btn-primary"><i class="fas fa-home"></i> Back to Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %> 

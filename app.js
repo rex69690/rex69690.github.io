@@ -19,20 +19,68 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// MongoDB connection
+// MongoDB connection - Optimized for serverless
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://your-mongodb-atlas-connection-string';
 
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000 // Timeout after 5s instead of 30s
-})
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => {
+// Create a cached connection variable
+let cachedDb = null;
+
+// Function to connect to MongoDB
+async function connectToDatabase() {
+  // If the database connection is cached, use it
+  if (cachedDb) {
+    return cachedDb;
+  }
+
+  // If no connection is cached, create a new one
+  try {
+    // Connect to MongoDB
+    const client = await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+      connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
+      socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+    });
+
+    console.log('MongoDB connected successfully');
+    
+    // Cache the database connection
+    cachedDb = client;
+    return cachedDb;
+  } catch (err) {
     console.log('MongoDB connection error:', err);
     // Fallback to in-memory data if MongoDB connection fails
     console.log('Using in-memory data storage as fallback');
-  });
+    return null;
+  }
+}
+
+// Connect to MongoDB at startup for non-serverless environments
+if (process.env.NODE_ENV !== 'production') {
+  connectToDatabase()
+    .then(() => console.log('MongoDB connected for development'))
+    .catch(err => console.error('MongoDB connection error:', err));
+}
+
+// Add connection middleware for serverless environments
+app.use(async (req, res, next) => {
+  // For production/serverless, connect on each request if needed
+  if (process.env.NODE_ENV === 'production' && !cachedDb) {
+    try {
+      await connectToDatabase();
+    } catch (error) {
+      console.error('Error connecting to database:', error);
+      // Continue even if connection fails - will use fallback data
+    }
+  }
+  next();
+});
+
+// Add a simple health check route
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Server is running' });
+});
 
 // Import routes
 const indexRoutes = require('./routes/index');

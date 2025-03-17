@@ -31,7 +31,21 @@ if %ERRORLEVEL% NEQ 0 (
 echo.
 echo Starting deployment...
 echo.
-vercel
+
+REM Ask for MongoDB connection string
+set /p MONGODB_URI="Enter your MongoDB connection string (or press Enter to skip): "
+
+echo.
+echo Deploying with optimized settings for serverless functions...
+echo.
+
+if "%MONGODB_URI%"=="" (
+    echo Deploying without MongoDB connection string...
+    vercel --prod
+) else (
+    echo Deploying with MongoDB connection string...
+    vercel --prod -e MONGODB_URI="%MONGODB_URI%"
+)
 
 echo.
 echo If deployment was successful, your app is now live!
