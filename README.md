@@ -1,8 +1,19 @@
 # Personal Finance Dashboard
 
-A web-based personal finance dashboard built with Express.js and Node.js that allows you to track and manage your expenses.
+## ⚠️ IMPORTANT: GitHub Pages Deployment Note
 
-## Features
+**This application cannot be fully deployed on GitHub Pages.** GitHub Pages only serves static content and does not support server-side code execution (Node.js, Express, etc.) or database connections (MongoDB).
+
+**If you're seeing only a "Hello World" or landing page on the GitHub Pages site, this is expected behavior.**
+
+### Recommended Deployment Options:
+- **Vercel** (easiest option, see deployment instructions below)
+- **Render.com**
+- **Heroku**
+- **Railway**
+- **DigitalOcean App Platform**
+
+Each of these platforms supports Node.js applications and can connect to your MongoDB database.
 
 - Track expenses by category (food, travel, housing, utilities, entertainment, etc.)
 - Add detailed descriptions and dates for each expense
